@@ -1,16 +1,5 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-/mydb
 /target
 /.settings
-*.classpath
+.classpath
 .project
- No newline at end of file
-derby.log
-/target/
- No newline at end of file
+/logs
