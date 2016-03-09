@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.example.dto.CustomerDto;
 import com.example.dto.DtoBuilder;
 import com.example.entities.Customer;
-import com.example.entities.ModelBuilder;
+import com.example.entities.EntityBuilder;
 import com.example.repository.CustomerRepository;
 
 /**
@@ -36,7 +36,7 @@ public class CustomerService {
 	 */
 	public CustomerDto createCustomer(CustomerDto customerDto) {
 		LOGGER.info("Creating Customer...");
-		Customer customer = ModelBuilder.buildCustomer(customerDto);
+		Customer customer = EntityBuilder.buildCustomer(customerDto);
 		Customer newCustomer = customerRepository.save(customer);
 		CustomerDto newCustomerDto = DtoBuilder.buildCustomerDto(newCustomer);
 		return newCustomerDto;
