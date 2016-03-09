@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
@@ -75,6 +74,7 @@ public class CustomerControllerTest {
 		LOGGER.info("Tested to create customer.");
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test
 	public void listCustomers() throws URISyntaxException, JsonProcessingException {
 		LOGGER.info("Testing to get customer(s)....");
