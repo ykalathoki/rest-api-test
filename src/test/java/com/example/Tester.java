@@ -79,8 +79,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @WebAppConfiguration
 public abstract class Tester {
-	protected static final String CONTEXT_PATH = "/rest/api/v1";
-	protected static final String BASE_URI = "http://localhost:8080";
+	//protected static final String CONTEXT_PATH = "/rest/api/v1";
+	//protected static final String BASE_URI = "http://localhost:8080";
 	/**
 	 * to Generate JSON content from Java objects
 	 */
