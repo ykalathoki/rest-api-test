@@ -1,2 +1,2 @@
 # rest-api-test
-REST API integration testing application example
+Spring boot controller unit test example
