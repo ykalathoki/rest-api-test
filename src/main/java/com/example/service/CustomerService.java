@@ -24,7 +24,8 @@ import com.example.repository.CustomerRepository;
  */
 @Service
 public class CustomerService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(CustomerService.class);
 	@Autowired
 	private CustomerRepository customerRepository;
 
@@ -54,5 +55,13 @@ public class CustomerService {
 			customerDtoList.add(customerDto);
 		}
 		return customerDtoList;
+	}
+
+	/**
+	 * Deletes all customer
+	 */
+	public void deleteAllCustomer() {
+		LOGGER.info("Deleting all customer...");
+		customerRepository.deleteAll();
 	}
 }

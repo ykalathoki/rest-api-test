@@ -24,11 +24,25 @@ import com.example.dto.CustomerDto;
 public class TestCustomerControllerWithMockMvc extends Tester {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(TestCustomerControllerWithMockMvc.class);
+
+	/**
+	 * I am using this method to test all my requirement one by one. If you want
+	 * to test all methods at a time you cam simply annotate to all methods.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void test() throws Exception {
+//		testToCreateCustomer(); // Creates customer
+		testToGetCustomer(); // Lists all customer
+//		testToDeleteAllCustomer(); // Deletes all customer
+	}
+
 	/**
 	 * Tests to create customer.
 	 */
-	// @Test
-	public void testToCreateCustomer() throws Exception {
+
+	void testToCreateCustomer() throws Exception {
 		LOGGER.info("Testing to create customer...");
 
 		CustomerDto customerDto = new CustomerDto();
@@ -50,8 +64,8 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 	 * 
 	 * @throws Exception
 	 */
-	@Test
-	public void testToGetCustomer() throws Exception {
+
+	void testToGetCustomer() throws Exception {
 		LOGGER.info("Testing to get customer...");
 
 		MvcResult result = mockMvc
@@ -59,6 +73,19 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 		LOGGER.info("Result: " + result.getResponse().getContentAsString());
 		LOGGER.info("Tested to get customer.");
+	}
+
+	/**
+	 * Tests to delete all customer.
+	 * 
+	 * @throws Exception
+	 */
+
+	void testToDeleteAllCustomer() throws Exception {
+		LOGGER.info("Testing to deleting all customer.");
+		mockMvc.perform(MockMvcRequestBuilders.delete("/customer/delete"))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+		LOGGER.info("Tested to delete all customer.");
 	}
 
 }

@@ -50,4 +50,14 @@ public class CustomerController {
 		List<CustomerDto> customerDtoList=customerService.getAllCustomer();
 		return new ResponseEntity<Object>(customerDtoList, HttpStatus.OK);
 	}
+	
+	/**
+	 * Accepts request to delete all customer.
+	 */
+	@RequestMapping(value="/delete", method=RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteAllCustomer(){
+		LOGGER.info("Called to delete all customer.");
+		customerService.deleteAllCustomer();
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
 }
