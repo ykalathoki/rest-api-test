@@ -64,4 +64,12 @@ public class CustomerService {
 		LOGGER.info("Deleting all customer...");
 		customerRepository.deleteAll();
 	}
+
+	/**
+	 * Deletes customer assiciated with id.
+	 */
+	public void deleteCustomerById(Long id) {
+		LOGGER.info("Deleting customer id: " + id);
+		customerRepository.delete(id);
+	}
 }

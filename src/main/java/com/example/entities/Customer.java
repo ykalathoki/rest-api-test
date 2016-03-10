@@ -25,9 +25,12 @@ public class Customer implements Serializable {
 	private String mobileNumber;
 	private String address;
 
-	
 	public Customer() {
 	}
+
+//	public Customer(Long id) {
+//		this.id = id;
+//	}
 
 	/**
 	 * @return the id

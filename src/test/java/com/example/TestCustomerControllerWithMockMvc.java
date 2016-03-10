@@ -33,13 +33,20 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 	 */
 	@Test
 	public void test() throws Exception {
-//		testToCreateCustomer(); // Creates customer
-		testToGetCustomer(); // Lists all customer
-//		testToDeleteAllCustomer(); // Deletes all customer
+		Long id = 30L;
+
+		// testToCreateCustomer(); // Creates customer
+		 testToGetCustomer(); // Lists all customer
+		// testToDeleteAllCustomer(); // Deletes all customer
+		//testToDeleteCustomerById(id); // Deletes customer with given id
 	}
 
 	/**
 	 * Tests to create customer.
+	 * <p>
+	 * The test case for this is
+	 * <code>to check {@link HttpStatus} code. If customer created successfully 
+	 * it should return {@link HttpStatus} code 201.</code>
 	 */
 
 	void testToCreateCustomer() throws Exception {
@@ -60,7 +67,7 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 
 	/**
 	 * Tests to get customer(s). The test case is to check {@link HttpStatus}
-	 * code then only verify response string.
+	 * code and verify response.
 	 * 
 	 * @throws Exception
 	 */
@@ -77,6 +84,11 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 
 	/**
 	 * Tests to delete all customer.
+	 * <p>
+	 * The test case for this is
+	 * <code>to check its {@link HttpStatus}. Since if all
+	 * customer deleted successfully, it should return {@link HttpStatus} code
+	 * 200. So I am checking here whether this method returns this code or not.</code>
 	 * 
 	 * @throws Exception
 	 */
@@ -88,4 +100,29 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 		LOGGER.info("Tested to delete all customer.");
 	}
 
+	/**
+	 * Tests to delete customer associated with its own id.
+	 * <p>
+	 * The test case for this is <code>to check its {@link HttpStatus}. Since if
+	 * customer deleted successfully with its id, it should return
+	 * {@link HttpStatus} code 200. So I am checking here whether this method
+	 * returns this code or not.</code>
+	 * <p>
+	 * Faillure condition(s):
+	 * <p>
+	 * If there is no customer with this given id. The test should be failed.
+	 * <p>
+	 * <b>Note:</b> <i>To execute successful test you must give valid customer id.</i>
+	 * 
+	 * @param id
+	 *            the id can not be null
+	 * @throws Exception
+	 */
+
+	void testToDeleteCustomerById(Long id) throws Exception {
+		LOGGER.info("Testing to delete customer associated with id:" + id);
+		mockMvc.perform(MockMvcRequestBuilders.delete("/customer/delete/" + id))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+		LOGGER.info("Tested to delete customer associated with id:" + id);
+	}
 }
