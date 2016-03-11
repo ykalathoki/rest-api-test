@@ -72,4 +72,13 @@ public class CustomerService {
 		LOGGER.info("Deleting customer id: " + id);
 		customerRepository.delete(id);
 	}
+
+	/**
+	 * Edits single customer.
+	 */
+	public void editCustomer(CustomerDto customerDto) {
+		LOGGER.info("Editing customer");
+		Customer customer = EntityBuilder.buildCustomer(customerDto);
+		customerRepository.save(customer);
+	}
 }

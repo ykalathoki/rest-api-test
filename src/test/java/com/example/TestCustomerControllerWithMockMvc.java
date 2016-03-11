@@ -33,12 +33,25 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 	 */
 	@Test
 	public void test() throws Exception {
-		Long id = 30L;
-
-		// testToCreateCustomer(); // Creates customer
-		 testToGetCustomer(); // Lists all customer
+		Long id = 1L;
+		CustomerDto customerDto = getCustomerDto();
+		customerDto.setId(id);//only to edit :)
+		 //testToCreateCustomer(customerDto); // Creates customer
+		testToGetCustomer(); // Lists all customer
 		// testToDeleteAllCustomer(); // Deletes all customer
-		//testToDeleteCustomerById(id); // Deletes customer with given id
+		// testToDeleteCustomerById(id); // Deletes customer with given id
+//		 testToUpdateCustomer(customerDto);
+	}
+
+	/**
+	 * Creates customerDto object with new values and returns its object.
+	 */
+	private CustomerDto getCustomerDto() {
+		CustomerDto customerDto = new CustomerDto();
+		customerDto.setCustomerName("Yuba Raj Kalathoki");
+		customerDto.setMobileNumber("9847912345");
+		customerDto.setAddress("Lalitpur");
+		return customerDto;
 	}
 
 	/**
@@ -47,15 +60,13 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 	 * The test case for this is
 	 * <code>to check {@link HttpStatus} code. If customer created successfully 
 	 * it should return {@link HttpStatus} code 201.</code>
+	 * 
+	 * @param customerDto
+	 * @throws Exception
 	 */
 
-	void testToCreateCustomer() throws Exception {
+	void testToCreateCustomer(CustomerDto customerDto) throws Exception {
 		LOGGER.info("Testing to create customer...");
-
-		CustomerDto customerDto = new CustomerDto();
-		customerDto.setCustomerName("Yuba Raj Kalathoki");
-		customerDto.setMobileNumber("9847912345");
-		customerDto.setAddress("Lalitpur");
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/customer/create")
 				.contentType(MediaType.APPLICATION_JSON)
@@ -112,7 +123,8 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 	 * <p>
 	 * If there is no customer with this given id. The test should be failed.
 	 * <p>
-	 * <b>Note:</b> <i>To execute successful test you must give valid customer id.</i>
+	 * <b>Note:</b> <i>To execute successful test you must give valid customer
+	 * id.</i>
 	 * 
 	 * @param id
 	 *            the id can not be null
@@ -124,5 +136,19 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 		mockMvc.perform(MockMvcRequestBuilders.delete("/customer/delete/" + id))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 		LOGGER.info("Tested to delete customer associated with id:" + id);
+	}
+	/**
+	 * Tests to update customer.
+	 * 
+	 * @param customerDto
+	 * @throws Exception
+	 */
+	void testToUpdateCustomer(CustomerDto customerDto) throws Exception {
+		LOGGER.info("Testing to update/modify customer");
+		mockMvc.perform(MockMvcRequestBuilders.put("/customer/edit")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(OBJECT_MAPPER.writeValueAsString(customerDto)))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+		LOGGER.info("Testing to update/modify customer");
 	}
 }
