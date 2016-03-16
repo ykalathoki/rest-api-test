@@ -14,7 +14,9 @@ public class EntityBuilder {
 	 * Builds model {@link Customer}
 	 */
 	public static Customer buildCustomer(CustomerDto customerDto) {
-		return new Customer.Builder().id(customerDto.getId()).customerName(customerDto.getCustomerName())
-				.mobileNumber(customerDto.getMobileNumber()).address(customerDto.getAddress()).build();
+		return new Customer.Builder().id(customerDto.getId())
+				.customerName(customerDto.getCustomerName())
+				.mobileNumber(customerDto.getMobileNumber())
+				.address(customerDto.getAddress()).build();
 	}
 }

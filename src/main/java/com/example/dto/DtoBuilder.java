@@ -13,8 +13,10 @@ public class DtoBuilder {
 	 * Builds {@link CustomerDto}
 	 */
 	public static CustomerDto buildCustomerDto(Customer customer) {
-		return new CustomerDto.Builder().id(customer.getId()).customerName(customer.getCustomerName())
-				.mobileNumber(customer.getMobileNumber()).address(customer.getAddress()).build();
+		return new CustomerDto.Builder().id(customer.getId())
+				.customerName(customer.getCustomerName())
+				.mobileNumber(customer.getMobileNumber())
+				.address(customer.getAddress()).build();
 	}
 
 }

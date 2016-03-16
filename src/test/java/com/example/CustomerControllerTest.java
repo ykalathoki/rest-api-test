@@ -36,7 +36,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebAppConfiguration
 public class CustomerControllerTest {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerControllerTest.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(CustomerControllerTest.class);
 
 	public static final String CONTEXT_PATH = "/rest/api/v1";
 	public static final String BASE_URI = "http://localhost:8080";
@@ -55,19 +56,22 @@ public class CustomerControllerTest {
 	 * @throws JsonProcessingException
 	 */
 	@Test
-	public void createCustomer() throws URISyntaxException, JsonProcessingException {
+	public void createCustomer()
+			throws URISyntaxException, JsonProcessingException {
 		LOGGER.info("Testing to create customer....");
 		CustomerDto customerDto = new CustomerDto();
 		customerDto.setCustomerName("Yuba Raj Kalathoki");
 		customerDto.setMobileNumber("9847912345");
 		customerDto.setAddress("Kathmandu");
 
-//		HttpHeaders httpHeaders = new HttpHeaders();
-//		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+		// HttpHeaders httpHeaders = new HttpHeaders();
+		// httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-		RequestEntity<CustomerDto> request = RequestEntity.post(new URI(BASE_URI + CONTEXT_PATH + "/customer/create"))
+		RequestEntity<CustomerDto> request = RequestEntity
+				.post(new URI(BASE_URI + CONTEXT_PATH + "/customer/create"))
 				.body(customerDto);
-		ResponseEntity<CustomerDto> response = restTemplate.exchange(request, CustomerDto.class);
+		ResponseEntity<CustomerDto> response = restTemplate.exchange(request,
+				CustomerDto.class);
 		Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
 		// LOGGER.info(OBJECT_MAPPER.writeValueAsString(response.getBody()));
@@ -76,19 +80,22 @@ public class CustomerControllerTest {
 
 	@SuppressWarnings("rawtypes")
 	@Test
-	public void listCustomers() throws URISyntaxException, JsonProcessingException {
+	public void listCustomers()
+			throws URISyntaxException, JsonProcessingException {
 		LOGGER.info("Testing to get customer(s)....");
-//		HttpHeaders httpHeaders = new HttpHeaders();
-//		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-		
-		RequestEntity request = RequestEntity.get(new URI(BASE_URI + CONTEXT_PATH + "/customer/get"))
+		// HttpHeaders httpHeaders = new HttpHeaders();
+		// httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+		RequestEntity request = RequestEntity
+				.get(new URI(BASE_URI + CONTEXT_PATH + "/customer/get"))
 				.accept(MediaType.APPLICATION_JSON).build();
-		ResponseEntity<String> response = restTemplate.exchange(request, String.class);
-		
+		ResponseEntity<String> response = restTemplate.exchange(request,
+				String.class);
+
 		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-//		LOGGER.info(OBJECT_MAPPER.writeValueAsString(response));
-		
-//		LOGGER.info(response.toString());
+		// LOGGER.info(OBJECT_MAPPER.writeValueAsString(response));
+
+		// LOGGER.info(response.toString());
 		LOGGER.info("Tested to get customer(s).");
 	}
 }

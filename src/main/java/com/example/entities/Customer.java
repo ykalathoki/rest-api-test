@@ -28,9 +28,9 @@ public class Customer implements Serializable {
 	public Customer() {
 	}
 
-//	public Customer(Long id) {
-//		this.id = id;
-//	}
+	// public Customer(Long id) {
+	// this.id = id;
+	// }
 
 	/**
 	 * @return the id

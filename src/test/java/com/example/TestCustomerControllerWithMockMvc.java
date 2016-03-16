@@ -35,12 +35,12 @@ public class TestCustomerControllerWithMockMvc extends Tester {
 	public void test() throws Exception {
 		Long id = 1L;
 		CustomerDto customerDto = getCustomerDto();
-		customerDto.setId(id);//only to edit :)
-		 //testToCreateCustomer(customerDto); // Creates customer
+		customerDto.setId(id);// only to edit :)
+		// testToCreateCustomer(customerDto); // Creates customer
 		testToGetCustomer(); // Lists all customer
 		// testToDeleteAllCustomer(); // Deletes all customer
 		// testToDeleteCustomerById(id); // Deletes customer with given id
-//		 testToUpdateCustomer(customerDto);
+		// testToUpdateCustomer(customerDto);
 	}
 
 	/**

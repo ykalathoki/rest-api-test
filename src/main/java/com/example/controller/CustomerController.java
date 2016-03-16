@@ -76,7 +76,7 @@ public class CustomerController {
 	/**
 	 * Accepts request to update single customer.
 	 */
-	@RequestMapping(value="/edit", method=RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
 	public ResponseEntity<Object> editCustomer(
 			@RequestBody CustomerDto customerDto) {
 		LOGGER.info("Called to edit customer.");
